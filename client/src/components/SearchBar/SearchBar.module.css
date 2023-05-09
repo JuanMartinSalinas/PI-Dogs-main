@@ -1,0 +1,31 @@
+.searchBar {
+    margin: 15px;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lupa {
+    width: 20px;
+    height: 20px;
+}
+
+button{
+    background-color: rgba(190, 173, 73, 0.37);
+    margin: 5px;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+.input{
+    border-radius: 15px;
+    margin: 5px;
+    padding: 2px;
+    line-height: 2.05;
+    background-color: rgba(235, 200, 135, 0.808);
+}
+
+.input::placeholder {
+    font-style: italic;
+}

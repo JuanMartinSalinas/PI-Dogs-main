@@ -1,0 +1,58 @@
+.all {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.title{
+  font-size: 45px;
+}
+
+.img {
+  border-radius: 50%;
+  width: 25%;
+  height: 25%;
+  margin: 9px;
+}
+
+.button {
+    font-size: 2em;
+    padding: .5em .5em;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    appearance: none;
+    background-color: #131538c5;
+    color: #fff;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+    box-shadow: 0 2px 25px rgba(91, 107, 195, 0.5);
+  }
+  .button:focus {
+    outline: 0;
+  }
+  .button:before, .button:after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 140%;
+    height: 100%;
+    left: -20%;
+    z-index: -1000;
+    transition: all ease-in-out 0.5s;
+    background-repeat: no-repeat;
+  }
+    .button:active {
+    transform: scale(0.9);
+    background-color: #3b1f5c;
+    box-shadow: 0 2px 25px rgba(93, 48, 97, 0.2);
+  }
+
