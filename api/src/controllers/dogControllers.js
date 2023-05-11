@@ -4,8 +4,8 @@ const { API_KEY } = process.env;
 const { Temperament,Dog } = require('../db');
 
 async function getDogsData() {
-    const unhandledInfo = await axios.get(`https://api.thedogapi.com/v1/breeds?${API_KEY}`);
-    const handledInfo = await unhandledInfo.data.map(e => {
+    const allData = await axios.get(`https://api.thedogapi.com/v1/breeds?${API_KEY}`);
+    const allDogs = await allData.data.map(e => {
         return {
             id: e.id,
             name: e.name,
@@ -17,10 +17,11 @@ async function getDogsData() {
             weight_max: parseInt(e.weight.metric.slice(4)),
             height_min: parseInt(e.height.metric.slice(0, 2)),
             height_max: parseInt(e.height.metric.slice(4)) || parseInt(e.height.metric.slice(0, 2)),
+            favorite: false
             
         };
     });
-    return handledInfo;
+    return allDogs;
 }; // Función que llama los datos de la API
 
 async function getDogsDB() {
@@ -45,5 +46,5 @@ async function getAllDogs() {
 
 
 module.exports = {
-    getAllDogs, getDogsData, getDogsDB
+    getDogsData, getDogsDB, getAllDogs
 }

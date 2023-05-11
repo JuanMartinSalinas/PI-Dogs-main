@@ -2,17 +2,15 @@ import axios from 'axios';
 import {
     GET_DOGS,
     GET_DOGS_BY_NAME,
-    GET_DOGS_BY_BREED,
     GET_DOGS_BY_TEMP,
     GET_TEMPERAMENTS_LIST,
-    GET_BREEDS,
     ORDER_BY_NAME,
     ORDER_BY_WEIGHT,
     FILTER_BY_MAX_WEIGHT,
     FILTER_BY_MIN_WEIGHT,
     FILTER_CREATED,
     GET_DETAILS,
-    DELETE_DETAILS
+    CLEAR_DETAILS,
 } from './allActions.js'
 
 
@@ -20,48 +18,38 @@ import {
 
 export function getDogs() {
     return async function (dispatch) {
-        let json = await axios.get('http://localhost:3001/dogs')
+        let json = await axios.get("/dogs");
         return dispatch({
             type: GET_DOGS,
             payload: json.data
-        })
-    }
-}
+        });
+    };
+};
 
 export function nameDogs(name) {
     return async function (dispatch) {
-        let { data } = await axios.get(`http://localhost:3001/dogs?name=${name}`);
-        return dispatch({
-            type: GET_DOGS_BY_NAME,
-            payload: data
-        });
-    };
-}
-
-export function getDogsBreed(payload) {
-    return async function (dispatch) {
         try {
-            let json = await axios.get(`http://localhost:3001/breedGroup?breedGroup=${payload}`);
+            let { data } = await axios.get(`/dogs?name=${name}`);
             return dispatch({
-                type: GET_DOGS_BY_BREED,
-                payload: json.data
-            })
-        } catch (error) {
-            console.log(error, "Error on the filters in actions file")
+                type: GET_DOGS_BY_NAME,
+                payload: data
+            });
+        } catch (err) {
+            console.log(err, "Los perros no pudieron cargarse satisfactoriamente.")
         }
-    }
-}
+    };
+};
 
 export function filterByTemperament(payload) {
     return async function (dispatch) {
         try {
-            let json = await axios.get(`http://localhost:3001/dog/?temperament=${payload}`);
+            let json = await axios.get(`dog/?temperament=${payload}`);
             return dispatch({
                 type: GET_DOGS_BY_TEMP,
                 payload: json.data
             })
         } catch (error) {
-            console.log(error, "Error on the filters in actions file")
+            console.log(error, "Los filtros no pudieron cargarse satisfactoriamente. Error en /actionIndex.js")
         }
     }
 }
@@ -96,29 +84,27 @@ export function filterByMinWeight(payload) {
 
 export function getTemperamentsList() {
     return async function (dispatch) {
-        let json = await axios.get('http://localhost:3001/temperament');
-        let listOfTemperaments = json.data.map(el => el.name)
-        return dispatch({
-            type: GET_TEMPERAMENTS_LIST,
-            payload: listOfTemperaments
-        });
+        try {
+            let json = await axios.get("/temperament");
+            let listOfTemperaments = json.data.map(el => el.name)
+            return dispatch({
+                type: GET_TEMPERAMENTS_LIST,
+                payload: listOfTemperaments
+            });
+        } catch (err) {
+            console.log(err, "Los temperamentos no pudieron cargarse satisfactoriamente. Error en /actionIndex.js")
+        }
     }
 }
 
 export function postingDog(payload) {
     return async function () {
-        let response = await axios.post('http://localhost:3001/dogs', payload);
-        return response
-    }
-}
-
-export function getAllBreeds() {
-    return async function (dispatch) {
-        let json = await axios.get('http://localhost:3001/breedGroups');
-        return dispatch({
-            type: GET_BREEDS,
-            payload: json.data
-        });
+        try {
+            let response = await axios.post("/dogs", payload);
+            return response
+        } catch (err) {
+            console.log(err, "El perro no ha podido guardarse. Error en /actionIndex.js")
+        }
     }
 }
 
@@ -138,15 +124,15 @@ export function getDetails(id) {
                 payload: json.data
             })
         } catch (error) {
-            console.log(error)
+            console.log(err, "Los detalles no pudieron cargarse satisfactoriamente. Error en /actionIndex.js")
         }
     }
 }
 
-export function deleteDetails() {
+export function clearDetails() {
     return async function (dispatch){
-    return dispatch({
-        type: DELETE_DETAILS
-    })
-}
+        return dispatch({
+            type: CLEAR_DETAILS
+        })
+    }
 }

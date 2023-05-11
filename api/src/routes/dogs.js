@@ -1,40 +1,40 @@
 const express = require('express');
-const dogs = express.Router();
+const dogsRoutes = express.Router();
 const { Temperament, Dog } = require('../db');
 const { getAllDogs } = require('../controllers/dogControllers');
 
-dogs.use(express.json());
+dogsRoutes.use(express.json());
 
-dogs.get('/dogs', async (req, res) => {
-    const name = req.query.name;
+dogsRoutes.get('/dogs', async (req, res) => {
+    const { name } = req.query;
         try {
             let allDogs = await getAllDogs();
-                if (name) {
-                let dogName = allDogs.filter(
-                    dog => dog.name.toLowerCase().includes(name.toLowerCase())
+            if (name) {
+                let nameOfDog = allDogs.filter(
+                    dog => dog.name.toLowerCase().includes(name.toLowerCase()) // toLowerCase para que salgan independientemente de is en Query está en mayúscula o no
                 );
-                if (dogName) {
-                    res.status(200).send(dogName);
+                if (nameOfDog) {
+                    res.status(200).send(nameOfDog);
                 } else {
                     res.status(404).send("404 dogs not found");
                 }
             } else {
                 res.status(200).json(allDogs)
             }
-        } catch (error) {
+        } catch (err) {
             res.status(404).json("404 dog name not found")
         }
-    });
+});
 
 
-dogs.get('/dogs/:id', async (req, res) => {
+dogsRoutes.get('/dogs/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const allDogs = await getAllDogs();
         if (!id) {
             res.status(404).json("Couldn't find the name on DBase")
         } else {
-            const dog = allDogs.find(dogui => dogui.id.toString() === id);
+            const dog = allDogs.find(doge => doge.id.toString() === id);
             res.status(200).json(dog)
         }
     } catch (error) {
@@ -43,14 +43,27 @@ dogs.get('/dogs/:id', async (req, res) => {
 })
 
 
-dogs.post('/dogs', async (req, res) => {
+dogsRoutes.post('/dogs', async (req, res) => {
     let {
         name,height_min,height_max,weight_min,weight_max,life_span,temperament,image,
     } = req.body;
-    console.log(name);
 
     if (name && height_min && height_max && weight_min && weight_max && temperament) {
-        // takes that data for the new dog  
+                
+        // let repeated = await Dog.findAll({
+        //     where: {
+        //         name: name,
+        //         height_min: parseInt(height_min),
+        //         height_max: parseInt(height_max),
+        //         weight_min: parseInt(weight_min),
+        //         weight_max: parseInt(weight_max),
+        //         life_span: life_span,
+        //     }
+        // });
+        // if(repeated) {
+        //     return console.log("Perro repetido.")
+        // };
+
         const createDog = await Dog.create({
             name: name,
             height_min: parseInt(height_min),
@@ -58,19 +71,19 @@ dogs.post('/dogs', async (req, res) => {
             weight_min: parseInt(weight_min),
             weight_max: parseInt(weight_max),
             life_span: life_span,
-            image: image || 'https://dog.ceo/api/breeds/image/random',
+            image: image || 'https://cdn2.thedogapi.com/images/r1Ylge5Vm.jpg',
         });
-        temperament.map(async el => {
+        temperament.map(async t => {
             const findTemp = await Temperament.findAll({
-                where: { name: el }
+                where: { name: t }
             });
             createDog.addTemperament(findTemp);
         })
         res.status(200).send(createDog);
     } else {
-        res.status(404).send('Data needed to proceed is missing');
+        res.status(404).send("404 Data not found");
     }
 })
 
 
-module.exports = dogs;
+module.exports = dogsRoutes;

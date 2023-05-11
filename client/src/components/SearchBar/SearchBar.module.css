@@ -16,14 +16,15 @@ button{
     margin: 5px;
     padding: 5px;
     border-radius: 15px;
+    border: none;
 }
 
 .input{
     border-radius: 15px;
     margin: 5px;
     padding: 2px;
-    line-height: 2.05;
-    background-color: rgba(235, 200, 135, 0.808);
+    background-color: rgba(255, 196, 87, 0.3);
+    border: none;
 }
 
 .input::placeholder {

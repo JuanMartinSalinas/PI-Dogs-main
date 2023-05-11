@@ -1,0 +1,73 @@
+.side {
+    margin: 100px 5px;
+    margin-left: 3%;
+    padding: 10px;
+    max-width: 230px;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    top: 1%;
+    left: 2%;
+    border-radius: 7px;
+    background: rgb(18,0,36);
+    background: linear-gradient(0deg, rgba(18,0,36,0.7469362745098039) 0%, rgba(42,9,121,0.5760679271708684) 31%, rgba(134,0,255,0) 100%);
+    height: fit-content;
+    position: fixed;
+}
+
+.sortsHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.header {
+    margin: 0 10px;
+}
+
+.refresh:hover {
+    color: white;
+    background-color: #454545;
+    cursor: pointer;
+}
+
+.doge {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+}
+
+.doge:hover {
+    position: relative;
+    top: -20px;
+}
+
+.filters {
+    margin: 8px 5px;
+    margin-bottom: 7px;
+    margin-top: 15px;
+}
+
+.filterHeader {
+    margin-bottom: 2%;
+}
+
+.add {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.hopper {
+    height: 45px;
+    width: 45px;
+}
+
+select {
+    width: 100%;
+}
+

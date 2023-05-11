@@ -1,11 +1,10 @@
-.bodix {
-    width: 75%;
+.body {
+    width: 60%;
     height: 100%;
     font-size: 20px;
 }
 
-.mainContainer {
-    margin-top: 2%;
+.mainBox {
     width: 100%;
     height: 100%;
     display: flex;
@@ -15,103 +14,116 @@
     background-color:rgb(60, 44, 71, 0.7);
     box-shadow: 6px 7px 8px -6px rgba(69, 69, 69, 0.7);
     border-radius: 7px;
-    color: white;
+    color: aliceblue;
 }
 
-.mainTitle {
-    text-align: center;
+.title {
     margin: 10px;
+    text-align: center;
     font-size: 45px;
+    margin-top: -20px;
+    margin-bottom: -30px;
+}
+
+.idDog {
+    margin-top: -25px;
+    margin-bottom: -45px;
 }
 
 .image {
-    border-radius: 15px;
-    height: 350px;
-    box-shadow: 6px 7px 8px -6px rgba(240, 211, 252, 0.7);
+    height: 280px;
+    border-radius: 7px;
+    margin-bottom: -30px;
 }
 
-.detailsContainer {
+.detailsCard {
+    max-width: 80%;
+    min-height: 25%;
+    padding: 4px;
+    margin: 10px;
+    margin-top: -10px;
+    margin-bottom: -70px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.192);
-    padding: 8px;
     border-radius: 7px;
-    max-width: 80%;
-    min-height: 25%;
-    margin: 10px;
 }
 
-.breed_group {
+.breed {
+    width: 50%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: left;
+}
+
+.lifeSpan {
     width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+
+.height {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+
+.weight {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+
+.detailsImg {
+    width: 100px;
+    padding: 5px;
+    margin: -10px;
+    background-color: rgb(65, 44, 104,0.7);
+    border-radius: 50px;
 }
 
 .temperament {
+    width: 90%;
     display: flex;
     flex-direction: row;
     align-items: baseline;
     justify-content: left;
-    width: 100%;
     gap: 15px;
 }
 
-.life_span {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: left;
-    width: 50%;
-}
-
-.weights {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: left;
-    width: 50%;
-}
-
-.heights {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: left;
-    width: 50%;
-}
-
-.detailsSVG {
-    width: 100px;
-    background-color: rgb(65, 44, 104);
-    padding: 15px;
-    border-radius: 15px;
-}
-
 .button {
+    width: 50%;
+    margin-left:200px;
+    margin-right:400px;
+    border-radius:50px;
     background-color: rgb(90, 72, 119);
-    color: white;
+    color: aliceblue;
     cursor: pointer;
     line-height: 2.1;
-    width: 75px;
     font-size: 18px;
-    margin-left:662px;
+    border: none;
 }
 
-.imageSection {
-    padding: 5px;
+.button:hover {
+    border: 1px solid #ffffff;
+}
+
+.imageBox {
+    padding: 8px;
     margin: 15px;
 }
 
-.infoSection {
+.info {
     padding: 5px;
     margin: 15px;
-}
-
-.xBone {
-    height: 25px;
 }

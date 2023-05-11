@@ -2,9 +2,11 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Card.module.css";
 
-export default function Card( { id, name, image, temperament, temperaments } ) {
+export default function Card( { id, name, image, temperament, temperaments, weight_max, weight_min } ) {
 
-    if (!temperaments) { // Temperaments son los temperamentos de los perros que trae la BD. Do not worry
+    console.log(temperaments)
+
+    if (!temperaments) {
         return (
             <Fragment>
                 <div className={styles.card}>
@@ -14,9 +16,8 @@ export default function Card( { id, name, image, temperament, temperaments } ) {
                     </div>
                     <div className={styles.info}>
                     <div className={styles.temp}>
-                            <h5 className={styles.dogTemp}>{temperament}</h5>
-                            {/* <h6>{weight_max}</h6>
-                            <h6>{weight_min}</h6> */}
+                            <h6 className={styles.dogTemp}>Temperamentos: {temperament || "¡Un amigo peludo!"}</h6>
+                            <h6 className={styles.weight}>Min: {weight_min}kg, Max: {weight_max}kg</h6>
                     </div>
                     <div className={styles.imageZone}>
                         <img
@@ -31,8 +32,8 @@ export default function Card( { id, name, image, temperament, temperaments } ) {
                 </div>
             </Fragment>
             );
-        } else {
-            return (
+    } else {
+        return (
             <Fragment>
                 <div className={styles.card}>
                 <Link to={"/dogs/" + id}>
@@ -41,13 +42,10 @@ export default function Card( { id, name, image, temperament, temperaments } ) {
                     </div>
                     <div className={styles.info}>
                     <div className={styles.temp}>
-                        {temperaments ? (
-                            <h5 className={styles.temp}>
+                        <h5 className={styles.dogTemp}>
                             {temperaments.map((temp) => `${temp.name} `).join(', ')}
-                            </h5>
-                        ) : (
-                            <br />
-                        )}
+                        </h5>
+                        <h6 className={styles.weight}>Min: {weight_min}kg, Max: {weight_max}kg</h6>
                     </div>
                     <div className={styles.imageZone}>
                         <img className={styles.image} src={image} alt={`Perro`}/>

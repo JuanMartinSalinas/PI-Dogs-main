@@ -1,6 +1,6 @@
 .mainContainerCreation {
-    margin-top: 2%;
     padding: 2%;
+    color: aliceblue;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -8,7 +8,6 @@
     background-color:rgb(60, 44, 71, 0.7);
     box-shadow: 6px 7px 8px -6px rgba(69, 69, 69, 0.7);
     border-radius: 7px;
-    color: white;
 }
 
 .formContainer {
@@ -27,54 +26,58 @@ form {
 .button {
     cursor: pointer;
     line-height: 2.5;
-    width: 75px;
+    width: 150px;
     background-color: rgb(202, 195, 90);
+    border: none;
+    margin-bottom: -70px;
+    border-radius: 50px;
 }
 
-.button:hover{
-    background-color: rgb(236, 227, 90);
-    transform: scale(1.02,1.02);
+
+.button:hover {
+    border: 1px solid #ffffff;
+    font-weight: bold;
 }
 
 .cancelButton {
     cursor: pointer;
+    margin-left: 100px;
     line-height: 2.5;
-    width: 75px;
+    width: 150px;
     background-color: rgb(148, 70, 163);
-    color: white;
+    border: none;
+    margin-bottom: -70px;
+    border-radius: 50px;
 }
 
 .cancelButton:hover{
-    background-color: rgb(212, 61, 175);
-    transform: scale(1.02,1.02);
+    border: 1px solid #ffffff;
+    font-weight: bold;
 }
 
-.Section {
-    display: flex;
+.section {
+    margin: 8px;
+    padding: 8px;
+    margin-top:20px;
     width:100%;
+    display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: baseline;
-    margin: 8px;
-    padding: 8px;
-    margin-top:20px;
     border-radius: 3px;
     gap: 5px;
     background-color: rgba(197, 156, 187, 0.3);
 }
 
-.sidebar_box {
+.sort {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.sidebar_box > h4 {
-    width: 100%;
-}
 
-.selectedItems {
+.selectedTemps {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -86,9 +89,34 @@ form {
     padding: 3px 10px;
 }
 
-.selectedItems > button {
+.selectedTemps > button {
     background-color:rgb(187, 65, 171);
     width: 25px;
+    padding-left: 5px;
+    border:none;
+    cursor: pointer;
+}
+
+.error {
+    font-size: 10px;
+    font-style: italic;
+    color: red;
+}
+
+.buttonSection {
+    width: 100%;
+    padding-top:35px;
+    display: inline-block;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.styledTemps {
+    width: 240px;
+    height: 34px;
+    overflow: hidden;
+    border: 1px solid #acacac;
 }
 
 label {
@@ -104,27 +132,15 @@ input::placeholder {
     color: rgb(0, 0, 0);
 }
 
-.error {
-    font-size: 10px;
-    color: red;
-}
-
-.buttonSection {
-    width: 100%;
-    padding-top:35px;
-    display: inline-block;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
 option {
     line-height: 2;
 }
 
-.styled_select {
-    width: 240px;
-    height: 34px;
-    overflow: hidden;
-    border: 1px solid #ccc;
-}
+
+/* .bigImg {
+    position: relative;
+    height: 100px;
+    width: 100px;
+    max-width: 10%;
+    max-height: 10%;
+} */

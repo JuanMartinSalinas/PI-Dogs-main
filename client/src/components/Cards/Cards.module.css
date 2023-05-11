@@ -1,9 +1,12 @@
-.cards{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+.paginationNums {
+    min-width: 100%;
+}
+
+.cards {
     width: 90%;
     margin-left: 20%;
     margin-top: 110px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
