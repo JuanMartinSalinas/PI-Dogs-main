@@ -9,16 +9,14 @@ async function getDogsData() {
         return {
             id: e.id,
             name: e.name,
-            image: e.image.url,
+            image: `https://cdn2.thedogapi.com/images/${e.reference_image_id}.jpg`,
             breed_group: e.breed_group,
             temperament: e.temperament,
             life_span: e.life_span,
             weight_min: parseInt(e.weight.metric.slice(0, 2)),
             weight_max: parseInt(e.weight.metric.slice(4)),
             height_min: parseInt(e.height.metric.slice(0, 2)),
-            height_max: parseInt(e.height.metric.slice(4)) || parseInt(e.height.metric.slice(0, 2)),
-            favorite: false
-            
+            height_max: parseInt(e.height.metric.slice(4)) || parseInt(e.height.metric.slice(0, 2)),        
         };
     });
     return allDogs;
